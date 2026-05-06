@@ -10,3 +10,4 @@ opencv-python
 reportlab
 werkzeug
 openpyxl
+gunicorn
