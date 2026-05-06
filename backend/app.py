@@ -106,4 +106,4 @@ def get_report(case_id):
     return send_file(pdf_path, as_attachment=True, download_name=f"ArthaDrishti_Report_{case_id}.pdf")
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=False)
