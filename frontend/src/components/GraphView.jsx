@@ -14,7 +14,7 @@ export default function GraphView({ caseId }) {
     
     const fetchGraph = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/graph/${caseId}`);
+        const res = await axios.get(`https://arthadrishti-b28d.onrender.com/api/graph/${caseId}`);
         setGraphData(res.data);
       } catch (err) {
         console.error("Error fetching graph", err);

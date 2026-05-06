@@ -35,7 +35,7 @@ export default function Upload({ setCaseId }) {
         formData.append('demo_mode', 'true');
       }
 
-      const res = await axios.post('http://localhost:5000/api/upload', formData);
+      const res = await axios.post('https://arthadrishti-b28d.onrender.com/api/upload', formData);
       
       // Artificial delay for effect
       setTimeout(() => {

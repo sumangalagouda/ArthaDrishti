@@ -14,8 +14,8 @@ export default function Dashboard({ caseId }) {
     const fetchData = async () => {
       try {
         const [sumRes, flagRes] = await Promise.all([
-          axios.get(`http://localhost:5000/api/summary/${caseId}`),
-          axios.get(`http://localhost:5000/api/results/${caseId}`)
+          axios.get(`https://arthadrishti-b28d.onrender.com/api/summary/${caseId}`),
+          axios.get(`https://arthadrishti-b28d.onrender.com/api/results/${caseId}`)
         ]);
         
         setSummary(sumRes.data);

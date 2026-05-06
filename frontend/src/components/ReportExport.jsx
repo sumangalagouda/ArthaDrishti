@@ -11,7 +11,7 @@ export default function ReportExport({ caseId }) {
     setDownloading(true);
     
     // Create a temporary link to trigger download
-    const url = `http://localhost:5000/api/report/${caseId}`;
+    const url = `https://arthadrishti-b28d.onrender.com/api/report/${caseId}`;
     const a = document.createElement('a');
     a.href = url;
     a.download = `ArthaDrishti_Report_${caseId}.pdf`;
