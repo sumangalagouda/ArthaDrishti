@@ -12,16 +12,16 @@ function App() {
 
   // Nav item component
   const NavItem = ({ id, icon: Icon, label }) => (
+    <button
       onClick={() => {
         setActiveTab(id);
-        setIsMobileMenuOpen(false); // Close menu on selection on mobile
+        setIsMobileMenuOpen(false);
       }}
       disabled={id !== 'upload' && !caseId}
-      className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
-        activeTab === id 
-          ? 'bg-blue-600 text-white' 
+      className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${activeTab === id
+          ? 'bg-blue-600 text-white'
           : 'text-gray-400 hover:bg-gray-800 hover:text-white'
-      } ${(id !== 'upload' && !caseId) ? 'opacity-50 cursor-not-allowed' : ''}`}
+        } ${(id !== 'upload' && !caseId) ? 'opacity-50 cursor-not-allowed' : ''}`}
     >
       <Icon size={20} />
       <span className="font-medium">{label}</span>
@@ -35,15 +35,15 @@ function App() {
         <span className="font-bold text-white mr-2">CIDECODE 2026:</span>
         This is a live functional prototype using synthetic demonstration data. Core algorithms and UI are fully implemented and ready for real data integration.
       </div>
-      
+
       <div className="flex flex-1 overflow-hidden relative">
-        
+
         {/* Mobile Top Header (Visible only on small screens) */}
         <div className="md:hidden absolute top-0 left-0 right-0 h-16 bg-gray-950 border-b border-gray-800 flex items-center justify-between px-4 z-30">
           <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
             ArthaDrishti
           </h1>
-          <button 
+          <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-gray-300 hover:text-white p-2"
           >
@@ -53,7 +53,7 @@ function App() {
 
         {/* Mobile Overlay */}
         {isMobileMenuOpen && (
-          <div 
+          <div
             className="md:hidden fixed inset-0 bg-black/60 z-40"
             onClick={() => setIsMobileMenuOpen(false)}
           />
@@ -67,21 +67,21 @@ function App() {
             </h1>
             <p className="text-sm text-gray-500 mt-1">Intelligence Platform</p>
           </div>
-          
+
           <div className="md:hidden h-16 flex items-center justify-between px-6 border-b border-gray-800">
-             <h1 className="text-xl font-bold text-blue-400">Menu</h1>
-             <button onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400">
-               <X size={20} />
-             </button>
+            <h1 className="text-xl font-bold text-blue-400">Menu</h1>
+            <button onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400">
+              <X size={20} />
+            </button>
           </div>
-          
+
           <nav className="flex-1 px-4 space-y-2 mt-4 md:mt-0 overflow-y-auto">
             <NavItem id="upload" icon={UploadIcon} label="Data Ingestion" />
             <NavItem id="dashboard" icon={LayoutDashboard} label="Dashboard" />
             <NavItem id="graph" icon={Share2} label="Network Graph" />
             <NavItem id="report" icon={FileText} label="Export Report" />
           </nav>
-          
+
           {caseId && (
             <div className="p-4 border-t border-gray-800">
               <div className="text-xs text-gray-500 mb-1">Active Case</div>
