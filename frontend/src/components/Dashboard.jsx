@@ -48,10 +48,10 @@ export default function Dashboard({ caseId }) {
   const highFlags = flags.filter(f => f.severity === 'HIGH').length;
 
   return (
-    <div className="flex-1 overflow-y-auto p-8 bg-gray-900">
+    <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-gray-900">
       <div className="flex justify-between items-end mb-8">
         <div>
-          <h2 className="text-3xl font-bold text-white mb-1">Intelligence Dashboard</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-1">Intelligence Dashboard</h2>
           <p className="text-gray-400">Overview of suspicious activities and insights.</p>
         </div>
         <div className="text-right">
@@ -61,7 +61,7 @@ export default function Dashboard({ caseId }) {
       </div>
 
       {/* Metric Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
         <div className="bg-gray-800 border border-gray-700 rounded-xl p-6 relative overflow-hidden">
           <div className="absolute -right-4 -top-4 text-blue-500/10">
             <Activity size={100} />

@@ -51,7 +51,7 @@ export default function Upload({ setCaseId }) {
   };
 
   return (
-    <div className="h-full flex flex-col items-center justify-center p-8 bg-gray-900 overflow-y-auto">
+    <div className="h-full flex flex-col items-center justify-center p-4 md:p-8 bg-gray-900 overflow-y-auto">
       <div className="max-w-2xl w-full">
         
         <div className="mb-8 text-center">
@@ -59,7 +59,7 @@ export default function Upload({ setCaseId }) {
           <p className="text-gray-400">Upload bank statements to begin automated fraud detection.</p>
         </div>
 
-        <div className="bg-gray-800 rounded-2xl p-8 border border-gray-700 shadow-xl">
+        <div className="bg-gray-800 rounded-2xl p-6 md:p-8 border border-gray-700 shadow-xl">
           <div className="mb-6">
             <label className="block text-sm font-medium text-gray-300 mb-2">Case ID / Reference</label>
             <input 

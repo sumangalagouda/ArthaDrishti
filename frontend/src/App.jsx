@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Upload as UploadIcon, LayoutDashboard, Share2, FileText } from 'lucide-react';
+import { Upload as UploadIcon, LayoutDashboard, Share2, FileText, Menu, X } from 'lucide-react';
 import Upload from './components/Upload';
 import Dashboard from './components/Dashboard';
 import GraphView from './components/GraphView';
@@ -8,11 +8,14 @@ import ReportExport from './components/ReportExport';
 function App() {
   const [activeTab, setActiveTab] = useState('upload');
   const [caseId, setCaseId] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Nav item component
   const NavItem = ({ id, icon: Icon, label }) => (
-    <button
-      onClick={() => setActiveTab(id)}
+      onClick={() => {
+        setActiveTab(id);
+        setIsMobileMenuOpen(false); // Close menu on selection on mobile
+      }}
       disabled={id !== 'upload' && !caseId}
       className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
         activeTab === id 
@@ -33,17 +36,46 @@ function App() {
         This is a live functional prototype using synthetic demonstration data. Core algorithms and UI are fully implemented and ready for real data integration.
       </div>
       
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden relative">
+        
+        {/* Mobile Top Header (Visible only on small screens) */}
+        <div className="md:hidden absolute top-0 left-0 right-0 h-16 bg-gray-950 border-b border-gray-800 flex items-center justify-between px-4 z-30">
+          <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+            ArthaDrishti
+          </h1>
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="text-gray-300 hover:text-white p-2"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Overlay */}
+        {isMobileMenuOpen && (
+          <div 
+            className="md:hidden fixed inset-0 bg-black/60 z-40"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+        )}
+
         {/* Sidebar */}
-        <aside className="w-64 bg-gray-950 border-r border-gray-800 flex flex-col">
-          <div className="p-6">
+        <aside className={`absolute md:relative inset-y-0 left-0 w-64 bg-gray-950 border-r border-gray-800 flex flex-col z-50 transform transition-transform duration-200 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
+          <div className="p-6 hidden md:block">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
               ArthaDrishti
             </h1>
             <p className="text-sm text-gray-500 mt-1">Intelligence Platform</p>
           </div>
           
-          <nav className="flex-1 px-4 space-y-2">
+          <div className="md:hidden h-16 flex items-center justify-between px-6 border-b border-gray-800">
+             <h1 className="text-xl font-bold text-blue-400">Menu</h1>
+             <button onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400">
+               <X size={20} />
+             </button>
+          </div>
+          
+          <nav className="flex-1 px-4 space-y-2 mt-4 md:mt-0 overflow-y-auto">
             <NavItem id="upload" icon={UploadIcon} label="Data Ingestion" />
             <NavItem id="dashboard" icon={LayoutDashboard} label="Dashboard" />
             <NavItem id="graph" icon={Share2} label="Network Graph" />
@@ -59,7 +91,7 @@ function App() {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 flex flex-col h-full overflow-hidden relative">
+        <main className="flex-1 flex flex-col h-full overflow-hidden relative pt-16 md:pt-0">
           {activeTab === 'upload' && <Upload setCaseId={(id) => { setCaseId(id); setActiveTab('dashboard'); }} />}
           {activeTab === 'dashboard' && <Dashboard caseId={caseId} />}
           {activeTab === 'graph' && <GraphView caseId={caseId} />}
