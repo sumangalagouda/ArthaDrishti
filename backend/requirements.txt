@@ -1,0 +1,12 @@
+flask
+flask-cors
+pandas
+numpy
+scikit-learn
+networkx
+pdfplumber
+pytesseract
+opencv-python
+reportlab
+werkzeug
+openpyxl
