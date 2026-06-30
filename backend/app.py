@@ -19,6 +19,10 @@ UPLOAD_FOLDER = 'uploads'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
+@app.route("/")
+def health():
+    return {"status": "ok"}
+
 @app.route('/api/upload', methods=['POST'])
 def upload_files():
     case_id = request.form.get('case_id', 'DEMO-CASE-001')
@@ -105,5 +109,10 @@ def get_report(case_id):
     
     return send_file(pdf_path, as_attachment=True, download_name=f"ArthaDrishti_Report_{case_id}.pdf")
 
-if __name__ == '__main__':
-    app.run(port=5000, debug=False)
+if __name__ == "__main__":
+    import os
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000)),
+        debug=False
+    )

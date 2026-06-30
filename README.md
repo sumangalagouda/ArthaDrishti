@@ -1,6 +1,6 @@
 # ArthaDrishti 🕵️‍♂️💸
 
-**ArthaDrishti** is a high-performance, local-first financial fraud detection and investigation platform built for the **CIDECODE 2026 Hackathon**. 
+**ArthaDrishti** is a high-performance, local-first financial fraud detection and investigation platform built for the **CIH 2026 Hackathon**. 
 
 It empowers law enforcement and financial investigators to rapidly ingest multi-bank statements, standardize transactional data, and perform automated fraud pattern analysis to detect illicit financial activities such as money laundering, smurfing, and round-tripping.
 
