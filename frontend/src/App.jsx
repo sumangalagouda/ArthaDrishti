@@ -32,7 +32,6 @@ function App() {
     <div className="flex flex-col h-screen bg-gray-900 text-gray-100 overflow-hidden">
       {/* Hackathon Banner */}
       <div className="bg-gradient-to-r from-blue-900/80 via-indigo-900/80 to-purple-900/80 text-center py-2 px-4 text-xs sm:text-sm text-blue-100 font-medium border-b border-blue-800 shadow-md">
-        <span className="font-bold text-white mr-2">CIDECODE 2026:</span>
         This is a live functional prototype using synthetic demonstration data. Core algorithms and UI are fully implemented and ready for real data integration.
       </div>
 

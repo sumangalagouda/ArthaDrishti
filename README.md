@@ -89,6 +89,4 @@ ArthaDrishti includes a **Mock Data Generator** and test scripts to easily demon
 
 ---
 
-## 📜 License
 
-Built with ❤️ for the CIDECODE 2026 Hackathon.
